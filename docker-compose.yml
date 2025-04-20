@@ -1,0 +1,58 @@
+services:
+    gateway:
+        container_name: gateway
+        restart: always
+        build: ./api/gateway
+        ports:
+            - "7000:7000"
+        networks:
+            - swapi-net
+
+    characters:
+        container_name: characters
+        restart: always
+        build: ./api/characters
+        ports:
+            - "7001:7001"
+        networks:
+            - swapi-net
+
+    films:
+        container_name: films
+        restart: always
+        build: ./api/films
+        ports:
+            - "7002:7002"
+        networks:
+            - swapi-net
+
+    planets:
+        container_name: planets
+        restart: always
+        build: ./api/planets
+        ports:
+            - "7003:7003"
+        networks:
+            - swapi-net
+
+    db:
+        container_name: db
+        restart: always
+        build: ./api/db
+        ports:
+            - "7004:7004"
+        networks:
+            - swapi-net
+
+    client:
+        container_name: client
+        restart: always
+        build: ./client
+        ports:
+            - "5173:5173"
+        networks:
+            - swapi-net
+
+networks:
+    swapi-net:
+        driver: bridge
