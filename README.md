@@ -1,7 +1,7 @@
 # AYI - Curso: Docker - Docker Compose
 
 <figure>
-    <img src='./client/src/assets/banner.png' alt='banner'>
+    <img src='./client/src/images/banner.png' alt='banner'>
 </figure>
 
 # Objetivos teóricos a desarrollar
@@ -15,7 +15,9 @@ Orquestación de contenedores a traves de docker-compose. Publicación de imagen
 * Docker
 * Docker Compose
 
-![arquitectura de conexión](https://github.com/user-attachments/assets/448d024c-c100-48bf-bf8c-3f18dad96023)
+<figure>
+    <img src='./client/src/images/conexion.png' alt='arquitectura'>
+</figure>
 
 ### Sobre el Proyecto
 
