@@ -15,8 +15,7 @@ Orquestación de contenedores a traves de docker-compose. Publicación de imagen
 * Docker
 * Docker Compose
 
-<figure>
-   <img src='./client/src/assets/conexion.png' alt='arquitectura'>
+![arquitectura de conexión](https://github.com/user-attachments/assets/448d024c-c100-48bf-bf8c-3f18dad96023)
 
 ### Sobre el Proyecto
 
