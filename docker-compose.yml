@@ -1,9 +1,8 @@
-
 services:
     gateway:
         container_name: gateway
         restart: always
-        build: ./api/gateway
+        image: lorelor/ayi-docker-gateway:latest
         ports:
             - "7000:7000"
         networks:
@@ -12,7 +11,7 @@ services:
     characters:
         container_name: characters
         restart: always
-        build: ./api/characters
+        image: lorelor/ayi-docker-characters:latest
         ports:
             - "7001:7001"
         networks:
@@ -21,7 +20,7 @@ services:
     films:
         container_name: films
         restart: always
-        build: ./api/films
+        image: lorelor/ayi-docker-films:latest
         ports:
             - "7002:7002"
         networks:
@@ -30,7 +29,7 @@ services:
     planets:
         container_name: planets
         restart: always
-        build: ./api/planets
+        image: lorelor/ayi-docker-planets:latest
         ports:
             - "7003:7003"
         networks:
@@ -39,7 +38,7 @@ services:
     db:
         container_name: db
         restart: always
-        build: ./api/db
+        image: lorelor/ayi-docker-db:latest
         ports:
             - "7004:7004"
         networks:
@@ -48,7 +47,7 @@ services:
     client:
         container_name: client
         restart: always
-        build: ./client
+        image: lorelor/ayi-docker-client:latest
         ports:
             - "5173:5173"
         networks:
