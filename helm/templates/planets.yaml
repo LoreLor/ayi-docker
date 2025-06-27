@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-planets
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: planets
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: {{ index .Values.replicaCount "planets" }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: planets
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: planets
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      containers:
+        - name: planets
+          image: {{ .Values.planets.image.repository }}:{{ .Values.planets.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.planets.service.port }}
+          env:
+            - name: MONGO_URI
+              value: mongodb://{{ .Values.db.mongoUriKey }}:{{ .Values.db.service.port }}/planets

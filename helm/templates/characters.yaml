@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-characters
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: characters
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: {{ index .Values.replicaCount "characters" }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: characters
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: characters
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      containers:
+        - name: characters
+          image: {{ .Values.characters.image.repository }}:{{ .Values.characters.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.characters.service.port }}
+          env:
+            - name: MONGO_URI
+              value: "mongodb://db.swapi2.svc.cluster.local:7004"

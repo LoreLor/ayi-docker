@@ -1,0 +1,1 @@
+export const SERVER = 'http://localhost:7000' || 'http://192.168.49.2:3000';

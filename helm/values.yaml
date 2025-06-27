@@ -1,0 +1,70 @@
+namespaces: swapi
+namespaceDB: swapi2
+replicaCount: 
+  client: 2
+  gateway: 2
+  characters: 2
+  films: 2
+  planets: 2
+  db: 1
+
+image:
+  pullPolicy: Always
+
+client: 
+  image:
+    repository: lorelor/ayi-docker-client
+    tag: latest
+  service:
+    port: 5173
+    targetPort: 5173
+    type: NodePort
+  enabled: true
+
+gateway: 
+  image: 
+    repository: lorelor/ayi-docker-gateway
+    tag: latest
+  service:
+    port: 7000
+    targetPort: 7000
+    type: NodePort
+  enabled: true
+
+characters:
+  image: 
+    repository: lorelor/ayi-docker-characters
+    tag: latest
+  service:
+    port: 7001
+    targetPort: 7001
+  enabled : true
+
+films:
+  image: 
+    repository: lorelor/ayi-docker-films
+    tag: latest
+  service:
+    port: 7002
+    targetPort: 7002
+  enabled: true
+
+planets:
+  image: 
+    repository: lorelor/ayi-docker-planets
+    tag: latest
+  service:
+    port: 7003
+    targetPort: 7003
+  enabled: true
+
+db: 
+  image: 
+    repository: lorelor/ayi-docker-db
+    tag: latest
+  service:
+    port: 7004
+    targetPort: 7004
+    mongoSecretName: mongo-secret
+    mongoUriKey: MONGO_URI
+  enabled: true

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: films
+  namespace: swapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: films
+  template:
+    metadata:
+      labels:
+        app: films
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: films
+          image: lorelor/ayi-docker-films:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7002
+          env:
+            - name: MONGO_URI
+              value: "mongodb://db.swapi2.svc.cluster.local:7004"

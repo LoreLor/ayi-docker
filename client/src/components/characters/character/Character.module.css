@@ -1,0 +1,105 @@
+.card {
+    width: 250px;
+    cursor: pointer;
+    padding:3rem 0;
+}
+
+  .content {
+    height:fit-content;
+    width: 25vw;
+    min-height: 60vh;
+    text-align: center;
+    position: relative;
+    transition: all 2.25s;
+    color: white;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    background-color: var(--bg-card-front);
+    border: 3px inset  #088ad6fa;;
+  }
+
+  
+  .card:hover .content {
+    transform: rotateY(0.5turn);
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 2em;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    
+  }
+    
+
+  .title {
+    transform: translateZ(5rem);
+    font-size: 2rem;
+    color: white;
+    padding-bottom: 1rem;
+
+  }
+  
+  .subtitle {
+    transform: translateZ(2rem);
+    color: #ebedf3;
+    line-height: 4rem;
+    
+  }
+  
+  .back {
+    transform: rotateY(0.5turn);
+    
+    color:white;
+    background-color: #0774b3fa;
+    border: 3px inset var(--bg-color2);
+
+  }
+  
+  .description {
+    margin-top: 2rem;
+    transform: translateZ(3rem);
+    line-height: 3rem;
+  }
+  
+  .description li{
+    text-align: start;
+  }
+
+  .card_image {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  
+  .imageChar {
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    width: 45%;
+    height: 50%;
+    position: absolute;
+    left: 90px;
+    bottom: 10px;
+    border-radius: 15px;
+  }
+
+  /* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  /* Agrega aquí tus estilos para móviles */
+}
+
+/* Estilos para dispositivos de tamaño mediano */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Agrega aquí tus estilos para tabletas, etc. */
+}
+
+/* Estilos para dispositivos de tamaño grande (escritorios) */
+@media screen and (min-width: 1025px) {
+  /* Agrega aquí tus estilos para escritorios */
+}

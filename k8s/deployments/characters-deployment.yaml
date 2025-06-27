@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: characters
+  namespace: swapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: characters
+  template:
+    metadata:
+      labels:
+        app: characters
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: characters
+          image: lorelor/ayi-docker-characters:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7001
+          env:
+            - name: MONGO _URI
+              value: "mongodb://db.swapi2.svc.cluster.local:7004"

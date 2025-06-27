@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: planets-service
+  namespace: swapi
+spec:
+  selector:
+    app: planets
+  ports:
+    - port: 7003
+      targetPort: 7003

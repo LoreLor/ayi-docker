@@ -1,0 +1,72 @@
+##version: '3.9'
+
+services:
+  gateway:
+    container_name: gateway
+    build: ./api/gateway
+    ports:
+      - "7000:7000"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./api/gateway:/app
+
+  characters:
+    container_name: characters
+    build: ./api/characters
+    ports:
+      - "7001:7001"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./api/characters/src:/app/src
+
+  films:
+    container_name: films
+    build: ./api/films
+    ports:
+      - "7002:7002"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./api/films/src:/app/src
+
+  planets:
+    container_name: planets
+    build: ./api/planets
+    ports:
+      - "7003:7003"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./api/planets/src:/app/src
+
+  db:
+    container_name: db
+    build: ./api/db
+    ports:
+      - "7004:7004"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./api/db/src:/var/lib/mysql
+
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - "5173:5173"
+    restart: on-failure
+    networks:
+      - swapi-net
+    volumes:
+      - ./client/src:/app/src
+
+networks:
+  swapi-net:
+    driver: bridge

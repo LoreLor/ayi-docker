@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: swapi2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: db
+          image: lorelor/ayi-docker-db:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7004
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_URI

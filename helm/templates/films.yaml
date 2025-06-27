@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-films
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: films
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: {{ index .Values.replicaCount "films" }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: films
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: films
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      containers:
+        - name: films
+          image: {{ .Values.films.image.repository }}:{{ .Values.films.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.films.service.port }}
+          env:
+            - name: MONGO_URI
+              value: "mongodb://db.swapi2.svc.cluster.local:7004"

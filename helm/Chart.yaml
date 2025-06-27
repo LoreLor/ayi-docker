@@ -1,0 +1,6 @@
+apiVersion: v2
+name: starwars
+version: 0.1.0
+appVersion: "1.0"
+description: Despliegue de App Star Wars
+type: application
