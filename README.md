@@ -22,7 +22,6 @@
 │   │   ├── client-deployment.yaml
 │   │   ├── db-deployment.yaml
 │   │   ├── services/*.yaml
-│   │   └── _helpers.tpl
 │   ├── values.yaml
 │   └── Chart.yaml
 │
